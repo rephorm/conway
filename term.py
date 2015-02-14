@@ -1,10 +1,14 @@
+""" ANSI terminal drawing. """
+
 import contextlib
 from life import move
+
+ALIVE = 'o'
 
 CLEAR = '\033[2J'
 HIDE_CUR = '\033[?25l'
 SHOW_CUR = '\033[?25l'
-DRAW_FORMAT = '\033[%d;%df*'
+DRAW_FORMAT = '\033[%d;%df' + ALIVE
 
 
 def draw1(x):

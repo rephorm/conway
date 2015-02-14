@@ -1,3 +1,5 @@
+""" A collection of shapes. """
+
 def rect(w, h):
     return set([(i, j) for i in xrange(h) for j in xrange(w)])
 

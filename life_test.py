@@ -41,7 +41,7 @@ class LifeTest(unittest.TestCase):
             (2, 0): 1,
             (2, 1): 1,
             (2, 2): 1,
-        }, life.count_neighbors([(1, 1)]))
+        }, life.neighbor_counts([(1, 1)]))
 
     def testCountNeighborsSquare(self):
         living = set([(1, 1), (1, 2), (2, 1), (2, 2)])
@@ -67,7 +67,7 @@ class LifeTest(unittest.TestCase):
             (3, 1): 2,
             (3, 2): 2,
             (3, 3): 1,
-        }, life.count_neighbors(living))
+        }, life.neighbor_counts(living))
 
     def testStepStable(self):
         living = shapes.square(2)

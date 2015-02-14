@@ -1,5 +1,4 @@
-""" Conway's Game of Life on an infinite board.
-"""
+""" Conway's Game of Life on an infinite board.  """
 
 import collections
 
@@ -22,7 +21,7 @@ def neighbors(x):
     return move(_O, x)
 
 
-def count_neighbors(living):
+def neighbor_counts(living):
     """ Returns dict of (x,y) => num_neighbors for all cells. """
     n = collections.Counter()
     for x in map(neighbors, living):
@@ -32,16 +31,18 @@ def count_neighbors(living):
 
 def step(living):
     """ Returns next state. """
-    return set([k for k, v in count_neighbors(living).iteritems()
+    return set([k for k, v in neighbor_counts(living).iteritems()
                 if (k in living and v == 2) or v == 3])
 
 if __name__ == "__main__":
     import shapes, term, time
 
-    living = shapes.hbar(9)
-    dx = (6, 6)
+    living = set.union(
+        move(shapes.hbar(9), (5, 5)),
+        move(shapes.hbar(9), (13, 5)),
+    )
     with term.hidden_cursor():
         while True:
-            term.draw(living, dx)
+            term.draw(living)
             living = step(living)
             time.sleep(0.1)
